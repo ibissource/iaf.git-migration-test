@@ -1,6 +1,9 @@
 /*
  * $Log: Parameter.java,v $
- * Revision 1.3  2004-10-14 16:04:28  L190409
+ * Revision 1.4  2004-10-19 08:09:31  L190409
+ * omit xml declaration
+ *
+ * Revision 1.3  2004/10/14 16:04:28  gerrit
  * improved logging
  *
  * Revision 1.2  2004/10/12 15:06:48  gerrit
@@ -44,7 +47,7 @@ import nl.nn.adapterframework.util.XmlUtils;
  * @author richard / Gerrit van Brakel
  */
 public class Parameter implements INamedObject {
-	public static final String version="$Id: Parameter.java,v 1.3 2004-10-14 16:04:28 L190409 Exp $";
+	public static final String version="$Id: Parameter.java,v 1.4 2004-10-19 08:09:31 L190409 Exp $";
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private String name = null;
@@ -70,7 +73,7 @@ public class Parameter implements INamedObject {
 				try {
 					String xsltSource;
 					if ("xml".equalsIgnoreCase(getType())) {
-						xsltSource = XmlUtils.createXPathEvaluatorSource(getXpathExpression(),"xml"); 
+						xsltSource = XmlUtils.createXPathEvaluatorSource("",getXpathExpression(),"xml", false); 
 					} else {
 						xsltSource = XmlUtils.createXPathEvaluatorSource(getXpathExpression(),"text"); 
 					}
