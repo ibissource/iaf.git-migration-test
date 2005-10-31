@@ -1,6 +1,9 @@
 /*
  * $Log: RecordHandlingFlow.java,v $
- * Revision 1.1  2005-10-11 13:00:21  europe\m00f531
+ * Revision 1.2  2005-10-31 14:38:02  europe\m00f531
+ * Add . in javadoc
+ *
+ * Revision 1.1  2005/10/11 13:00:21  unknown2
  * New ibis file related elements, such as DirectoryListener, MoveFilePie and 
  * BatchFileTransformerPipe
  *
@@ -8,7 +11,7 @@
 package nl.nn.adapterframework.batch;
 
 /**
- * The flow contains the handlers to handle records of a specific type
+ * The flow contains the handlers to handle records of a specific type.
  * 
  * <p><b>Configuration:</b>
  * <table border="1">
@@ -25,7 +28,7 @@ package nl.nn.adapterframework.batch;
  * @author john
  */
 public final class RecordHandlingFlow {
-	public static final String version = "$RCSfile: RecordHandlingFlow.java,v $  $Revision: 1.1 $ $Date: 2005-10-11 13:00:21 $";
+	public static final String version = "$RCSfile: RecordHandlingFlow.java,v $  $Revision: 1.2 $ $Date: 2005-10-31 14:38:02 $";
 
 	private String recordKey;
 	private String recordHandlerRef;
