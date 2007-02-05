@@ -1,6 +1,9 @@
 /*
  * $Log: FileUtils.java,v $
- * Revision 1.8  2005-11-08 09:31:08  europe\m00f531
+ * Revision 1.9  2007-02-05 15:02:30  europe\L190409
+ * update javadoc
+ *
+ * Revision 1.8  2005/11/08 09:31:08  unknown2
  * Bug concerning filenames resolved
  *
  * Revision 1.7  2005/10/24 09:59:23  unknown2
@@ -45,12 +48,17 @@ import org.apache.commons.lang.StringUtils;
 
 
 /**
+ * Utilities for batch file handling.
+ * 
  * @author john
  * @version Id
  */
 public class FileUtils {
-	public static final String version = "$RCSfile: FileUtils.java,v $  $Revision: 1.8 $ $Date: 2005-11-08 09:31:08 $";
+	public static final String version = "$RCSfile: FileUtils.java,v $  $Revision: 1.9 $ $Date: 2007-02-05 15:02:30 $";
 
+	/**
+	 * Construct a filename from a pattern and session variables. 
+	 */
 	public static String getFilename(ParameterList definedParameters, PipeLineSession session, String originalFilename, String filenamePattern) throws ParameterException {
 		// no pattern defined, outputname = inputname
 		if (StringUtils.isEmpty(filenamePattern)) {
