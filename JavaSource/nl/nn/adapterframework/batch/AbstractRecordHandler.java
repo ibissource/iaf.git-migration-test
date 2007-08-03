@@ -1,6 +1,9 @@
 /*
  * $Log: AbstractRecordHandler.java,v $
- * Revision 1.6  2007-07-26 16:02:37  europe\L190409
+ * Revision 1.7  2007-08-03 08:24:00  europe\L190409
+ * updated javadoc
+ *
+ * Revision 1.6  2007/07/26 16:02:37  gerrit
  * changed seperator into separator
  *
  * Revision 1.5  2007/05/03 11:29:43  gerrit
@@ -49,7 +52,8 @@ import org.apache.log4j.Logger;
  * </table>
  * </p>
  * 
- * @author: John Dekker
+ * @author  john
+ * @version Id
  */
 public abstract class AbstractRecordHandler implements IRecordHandler {
 	protected Logger log = LogUtil.getLogger(this);
