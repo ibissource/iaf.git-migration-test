@@ -1,6 +1,9 @@
 /*
  * $Log: EjbJmsConfigurator.java,v $
- * Revision 1.4  2007-10-16 09:52:35  europe\M00035F
+ * Revision 1.5  2007-11-05 10:33:16  europe\M00035F
+ * Move interface 'IJmsConfigurator' from package 'configuration' to package 'core' in preparation of renaming it
+ *
+ * Revision 1.4  2007/10/16 09:52:35  tim
  * Change over JmsListener to a 'switch-class' to facilitate smoother switchover from older version to spring version
  *
  * Revision 1.3  2007/10/15 13:08:38  gerrit
@@ -33,7 +36,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import nl.nn.adapterframework.configuration.Configuration;
 import nl.nn.adapterframework.configuration.ConfigurationException;
-import nl.nn.adapterframework.configuration.IJmsConfigurator;
+import nl.nn.adapterframework.core.IJmsConfigurator;
 import nl.nn.adapterframework.core.ListenerException;
 import nl.nn.adapterframework.jms.PushingJmsListener;
 import nl.nn.adapterframework.receivers.GenericReceiver;
