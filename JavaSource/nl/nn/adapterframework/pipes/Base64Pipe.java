@@ -1,6 +1,9 @@
 /*
  * $Log: Base64Pipe.java,v $
- * Revision 1.4  2008-03-20 12:06:56  europe\L190409
+ * Revision 1.3.16.1  2008-04-03 08:14:16  europe\L190409
+ * synch from HEAD
+ *
+ * Revision 1.4  2008/03/20 12:06:56  gerrit
  * updated javadoc
  *
  * Revision 1.3  2006/04/25 06:56:00  gerrit
@@ -44,7 +47,7 @@ import sun.misc.BASE64Encoder;
  * @version Id
  */
 public class Base64Pipe extends FixedForwardPipe {
-	public static final String version="$RCSfile: Base64Pipe.java,v $ $Revision: 1.4 $ $Date: 2008-03-20 12:06:56 $";
+	public static final String version="$RCSfile: Base64Pipe.java,v $ $Revision: 1.3.16.1 $ $Date: 2008-04-03 08:14:16 $";
 
 	private String direction="encode";
 	private boolean convert2String=true;

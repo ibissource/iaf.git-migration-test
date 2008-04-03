@@ -1,6 +1,9 @@
 /*
  * $Log: IbisMultiSourceExpander.java,v $
- * Revision 1.5  2008-03-28 14:19:36  europe\L190409
+ * Revision 1.4.2.1  2008-04-03 08:09:52  europe\L190409
+ * synch from HEAD
+ *
+ * Revision 1.5  2008/03/28 14:19:36  gerrit
  * resolve non-found value to empty string
  *
  * Revision 1.4  2008/01/03 15:39:20  gerrit
