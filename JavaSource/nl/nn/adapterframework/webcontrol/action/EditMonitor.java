@@ -1,6 +1,9 @@
 /*
  * $Log: EditMonitor.java,v $
- * Revision 1.5  2008-08-13 13:46:57  europe\L190409
+ * Revision 1.6  2008-08-14 14:53:51  europe\L190409
+ * fixed exit determination
+ *
+ * Revision 1.5  2008/08/13 13:46:57  gerrit
  * some bugfixing
  *
  * Revision 1.4  2008/08/07 11:32:30  gerrit
@@ -45,10 +48,6 @@ public class EditMonitor extends ShowMonitors {
 		}
 		
 		return null;
-	}
-
-	public String determineExitForward(DynaActionForm monitorForm) {
-		return (String)monitorForm.get("return");
 	}
 
 }
