@@ -1,6 +1,9 @@
 /*
  * $Log: PercentileEstimatorBase.java,v $
- * Revision 1.5  2007-10-08 13:35:13  europe\L190409
+ * Revision 1.6  2008-08-27 16:25:16  europe\L190409
+ * added clear()
+ *
+ * Revision 1.5  2007/10/08 13:35:13  gerrit
  * changed ArrayList to List where possible
  *
  * Revision 1.4  2006/09/07 08:37:51  gerrit
@@ -135,6 +138,9 @@ public class PercentileEstimatorBase implements PercentileEstimator {
 		return sample;
 	}
 
+	public void clear(){
+		// this class needs no cleanup
+	}
 
 
 }
