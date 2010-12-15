@@ -1,6 +1,9 @@
 /*
  * $Log: PushingJmsListener.java,v $
- * Revision 1.19  2010-01-28 15:00:03  L190409
+ * Revision 1.20  2010-12-15 15:15:13  L190409
+ * enable ackmode setting in configuration
+ *
+ * Revision 1.19  2010/01/28 15:00:03  gerrit
  * renamed 'Connection' classes to 'MessageSource'
  *
  * Revision 1.18  2010/01/20 08:23:58  peter
@@ -223,7 +226,7 @@ public class PushingJmsListener extends JmsListenerBase implements IPortConnecte
 			throw new ConfigurationException(getLogPrefix()+"could not get Destination",e);
 		}
         try {
-			jmsConnector.configureEndpointConnection(this, getMessagingSource().getConnectionFactory(), destination, getExceptionListener(), getCacheMode(), isJmsTransacted(), getMessageSelector());
+			jmsConnector.configureEndpointConnection(this, getMessagingSource().getConnectionFactory(), destination, getExceptionListener(), getCacheMode(), getAckMode(), isJmsTransacted(), getMessageSelector());
 		} catch (JmsException e) {
 			throw new ConfigurationException(e);
 		}
