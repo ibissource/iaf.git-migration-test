@@ -1,6 +1,9 @@
 /*
  * $Log: SapLUWManager.java,v $
- * Revision 1.4  2011-11-30 13:51:54  europe\m168309
+ * Revision 1.1  2012-02-06 14:33:04  m00f069
+ * Implemented JCo 3 based on the JCo 2 code. JCo2 code has been moved to another package, original package now contains classes to detect the JCo version available and use the corresponding implementation.
+ *
+ * Revision 1.4  2011/11/30 13:51:54  peter
  * adjusted/reversed "Upgraded from WebSphere v5.1 to WebSphere v6.1"
  *
  * Revision 1.1  2011/10/19 14:49:52  peter
@@ -13,7 +16,7 @@
  * introduction of SAP LUW management
  *
  */
-package nl.nn.adapterframework.extensions.sap;
+package nl.nn.adapterframework.extensions.sap.jco3;
 
 import nl.nn.adapterframework.configuration.ConfigurationException;
 import nl.nn.adapterframework.core.IPipeLineExitHandler;
@@ -26,6 +29,8 @@ import nl.nn.adapterframework.core.SenderException;
 import nl.nn.adapterframework.pipes.FixedForwardPipe;
 
 import org.apache.commons.lang.StringUtils;
+
+import com.sap.conn.jco.JCoException;
 
 /**
  * Manager for SAP Logical Units of Work (LUWs). 
@@ -48,11 +53,12 @@ import org.apache.commons.lang.StringUtils;
  * </table>
  * 
  * @author  Gerrit van Brakel
- * @since   4.6.0
+ * @author  Jaco de Groot
+ * @since   5.0
  * @version Id
  */
 public class SapLUWManager extends FixedForwardPipe implements IPipeLineExitHandler {
-	public static String version="$RCSfile: SapLUWManager.java,v $  $Revision: 1.4 $ $Date: 2011-11-30 13:51:54 $";
+	public static String version="$RCSfile: SapLUWManager.java,v $  $Revision: 1.1 $ $Date: 2012-02-06 14:33:04 $";
 
 	public static final String ACTION_BEGIN="begin";
 	public static final String ACTION_COMMIT="commit";
@@ -93,7 +99,11 @@ public class SapLUWManager extends FixedForwardPipe implements IPipeLineExitHand
 	}
 
 	public void atEndOfPipeLine(String correlationId, PipeLineResult pipeLineResult, PipeLineSession session) throws PipeRunException {
-		SapLUWHandle.releaseHandle(session,getLuwHandleSessionKey());
+		try {
+			SapLUWHandle.releaseHandle(session,getLuwHandleSessionKey());
+		} catch (JCoException e) {
+			throw new PipeRunException(this, getLogPrefix(null)+"could not release handle", e);
+		}
 	}
 
 	public void open() throws SenderException {
@@ -112,14 +122,22 @@ public class SapLUWManager extends FixedForwardPipe implements IPipeLineExitHand
 
 	public PipeRunResult doPipe(Object input, PipeLineSession session) throws PipeRunException {
 		if (getAction().equalsIgnoreCase(ACTION_BEGIN)) {
-			SapLUWHandle.retrieveHandle(session,getLuwHandleSessionKey(),true,getSapSystem(),false).begin();
+			try {
+				SapLUWHandle.retrieveHandle(session,getLuwHandleSessionKey(),true,getSapSystem(),false).begin();
+			} catch (JCoException e) {
+				throw new PipeRunException(this, "begin: could not retrieve handle", e);
+			}
 		} else
 		if (getAction().equalsIgnoreCase(ACTION_COMMIT)) {
 			SapLUWHandle handle=SapLUWHandle.retrieveHandle(session,getLuwHandleSessionKey());
 			if (handle==null) {
 				throw new PipeRunException(this, "commit: cannot find handle under sessionKey ["+getLuwHandleSessionKey()+"]");
 			} else {
-				handle.commit();
+				try {
+					handle.commit();
+				} catch (JCoException e) {
+					throw new PipeRunException(this, "commit: could not commit handle", e);
+				}
 			}
 		} else
 		if (getAction().equalsIgnoreCase(ACTION_ROLLBACK)) {
@@ -131,7 +149,11 @@ public class SapLUWManager extends FixedForwardPipe implements IPipeLineExitHand
 			}
 		} else
 		if (getAction().equalsIgnoreCase(ACTION_RELEASE)) {
-			SapLUWHandle.releaseHandle(session,getLuwHandleSessionKey());
+			try {
+				SapLUWHandle.releaseHandle(session,getLuwHandleSessionKey());
+			} catch (JCoException e) {
+				throw new PipeRunException(this, "release: could not release handle", e);
+			}
 		} 
 		return new PipeRunResult(getForward(),input);
 	}

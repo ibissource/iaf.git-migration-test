@@ -1,6 +1,9 @@
 /*
- * $Log: ClientFactoryUtils.java,v $
- * Revision 1.4  2011-11-30 13:51:53  europe\m168309
+ * $Log: DestinationFactoryUtils.java,v $
+ * Revision 1.1  2012-02-06 14:33:05  m00f069
+ * Implemented JCo 3 based on the JCo 2 code. JCo2 code has been moved to another package, original package now contains classes to detect the JCo version available and use the corresponding implementation.
+ *
+ * Revision 1.4  2011/11/30 13:51:53  peter
  * adjusted/reversed "Upgraded from WebSphere v5.1 to WebSphere v6.1"
  *
  * Revision 1.1  2011/10/19 14:49:54  peter
@@ -14,10 +17,10 @@
  *
  */
 
-package nl.nn.adapterframework.extensions.sap.tx;
+package nl.nn.adapterframework.extensions.sap.jco3.tx;
 
-import nl.nn.adapterframework.extensions.sap.SapException;
-import nl.nn.adapterframework.extensions.sap.SapSystem;
+import nl.nn.adapterframework.extensions.sap.jco3.SapException;
+import nl.nn.adapterframework.extensions.sap.jco3.SapSystem;
 import nl.nn.adapterframework.util.LogUtil;
 
 import org.apache.log4j.Logger;
@@ -25,61 +28,43 @@ import org.springframework.transaction.support.TransactionSynchronizationAdapter
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.Assert;
 
-import com.sap.mw.jco.JCO;
+import com.sap.conn.jco.JCoDestination;
+import com.sap.conn.jco.JCoException;
 
 /**
- * Helper class for managing a JCo clients, in particular
+ * Helper class for managing a JCo destinations, in particular
  * for obtaining transactional resources.
  *
  * <p>based on {@link org.springframework.jms.connection.ConnectionFactoryUtils}
  * 
  * @author  Gerrit van Brakel
- * @since   4.8
+ * @author  Jaco de Groot
+ * @since   5.0
  * @version Id
  */
-public abstract class ClientFactoryUtils {
-	private static final Logger logger = LogUtil.getLogger(ClientFactoryUtils.class);
-
-
-	/**
-	 * Release the given Client.
-	 * @param client the Client to release
-	 * (if this is <code>null</code>, the call will be ignored)
-	 * @param sapSystem the SapSystem that the Client was obtained from
-	 * (may be <code>null</code>)
-	 */
-	public static void releaseClient(JCO.Client client, SapSystem sapSystem) {
-		if (client == null) {
-			return;
-		}
-		try {
-			sapSystem.releaseClient(client);
-		}
-		catch (Throwable ex) {
-			logger.debug("Could not release JCO.Client", ex);
-		}
-	}
+public abstract class DestinationFactoryUtils {
+	private static final Logger logger = LogUtil.getLogger(DestinationFactoryUtils.class);
 
 	/**
-	 * Determine whether the given JCO.Client is transactional, that is,
+	 * Determine whether the given JCoDestination is transactional, that is,
 	 * bound to the current thread by Spring's transaction facilities.
-	 * @param client the JCO.Client to check
+	 * @param destination the JCoDestination to check
 	 * @param sapSystem the SapSystem that the Session originated from
-	 * @return whether the Client is transactional
+	 * @return whether the Destination is transactional
 	 */
-	public static boolean isClientTransactional(JCO.Client client, SapSystem sapSystem) {
-		if (client == null || sapSystem == null) {
+	public static boolean isDestinationTransactional(JCoDestination destination, SapSystem sapSystem) {
+		if (destination == null || sapSystem == null) {
 			return false;
 		}
 		JcoResourceHolder resourceHolder = (JcoResourceHolder) TransactionSynchronizationManager.getResource(sapSystem);
-		return (resourceHolder != null && resourceHolder.containsClient(client));
+		return (resourceHolder != null && resourceHolder.containsDestination(destination));
 	}
 
 
 	/**
 	 * Obtain a TID String that is synchronized with the current transaction, if any.
 	 * @param sapSystem the SapSystem to obtain a TID for
-	 * @param existingCon the existing JCO.Client to obtain a String for
+	 * @param existingCon the existing JCoDestination to obtain a String for
 	 * (may be <code>null</code>)
 	 * @param synchedLocalTransactionAllowed whether to allow for a local JMS transaction
 	 * that is synchronized with a Spring-managed transaction (where the main transaction
@@ -88,23 +73,24 @@ public abstract class ClientFactoryUtils {
 	 * SapSystem needs to handle transaction enlistment underneath the covers.
 	 * @return the TID, or <code>null</code> if none found
 	 * @throws SapException in case of JCo failure
+	 * @throws JCoException 
 	 */
 	public static String getTransactionalTid(
-			final SapSystem sapSystem, final JCO.Client existingClient, final boolean synchedLocalTransactionAllowed)
-			throws SapException {
+			final SapSystem sapSystem, final JCoDestination existingDestination, final boolean synchedLocalTransactionAllowed)
+			throws SapException, JCoException {
 
 		return doGetTransactionalTid(sapSystem, new ResourceFactory() {
 			public String getTid(JcoResourceHolder holder) {
-				return holder.getTid(existingClient);
+				return holder.getTid(existingDestination);
 			}
-			public JCO.Client getClient(JcoResourceHolder holder) {
-				return (existingClient != null ? existingClient : holder.getClient());
+			public JCoDestination getDestination(JcoResourceHolder holder) {
+				return (existingDestination != null ? existingDestination : holder.getDestination());
 			}
-			public JCO.Client createClient() throws SapException {
-				return sapSystem.getClient();
+			public JCoDestination createDestination() throws JCoException {
+				return sapSystem.getDestination();
 			}
-			public String createTid(JCO.Client client) throws SapException {
-				return client.createTID();
+			public String createTid(JCoDestination destination) throws JCoException {
+				return destination.createTID();
 			}
 			public boolean isSynchedLocalTransactionAllowed() {
 				return synchedLocalTransactionAllowed;
@@ -112,22 +98,22 @@ public abstract class ClientFactoryUtils {
 		});
 	}
 
-	public static JCO.Client getTransactionalClient(
+	public static JCoDestination getTransactionalDestination(
 			final SapSystem sapSystem, final boolean synchedLocalTransactionAllowed) 
-			throws SapException {
+			throws SapException, JCoException {
 
-		return doGetTransactionalClient(sapSystem, new ResourceFactory() {
+		return doGetTransactionalDestination(sapSystem, new ResourceFactory() {
 			public String getTid(JcoResourceHolder holder) {
-				return holder.getTid(holder.getClient());
+				return holder.getTid(holder.getDestination());
 			}
-			public JCO.Client getClient(JcoResourceHolder holder) {
-				return holder.getClient();
+			public JCoDestination getDestination(JcoResourceHolder holder) {
+				return holder.getDestination();
 			}
-			public JCO.Client createClient() throws SapException {
-				return sapSystem.getClient();
+			public JCoDestination createDestination() throws JCoException {
+				return sapSystem.getDestination();
 			}
-			public String createTid(JCO.Client client) throws SapException {
-				return client.createTID();
+			public String createTid(JCoDestination destination) throws JCoException {
+				return destination.createTID();
 			}
 			public boolean isSynchedLocalTransactionAllowed() {
 				return synchedLocalTransactionAllowed;
@@ -141,14 +127,14 @@ public abstract class ClientFactoryUtils {
 	 * (used as TransactionSynchronizationManager key)
 	 * @param resourceFactory the ResourceFactory to use for extracting or creating
 	 * JMS resources
-	 * @param startClient whether the underlying JMS JCO.Client approach should be
-	 * started in order to allow for receiving messages. Note that a reused JCO.Client
+	 * @param startDestination whether the underlying JMS JCoDestination approach should be
+	 * started in order to allow for receiving messages. Note that a reused JCoDestination
 	 * may already have been started before, even if this flag is <code>false</code>.
 	 * @return the transactional String, or <code>null</code> if none found
-	 * @throws JMSException in case of JMS failure
+	 * @throws JCoException in case of failure
 	 */
 	public static String doGetTransactionalTid(SapSystem sapSystem, ResourceFactory resourceFactory)
-			throws SapException {
+			throws JCoException {
 
 		Assert.notNull(sapSystem, "SapSystem must not be null");
 		Assert.notNull(resourceFactory, "ResourceFactory must not be null");
@@ -171,28 +157,15 @@ public abstract class ClientFactoryUtils {
 		if (resourceHolderToUse == null) {
 			resourceHolderToUse = new JcoResourceHolder(sapSystem);
 		}
-		JCO.Client client = resourceFactory.getClient(resourceHolderToUse);
+		JCoDestination destination = resourceFactory.getDestination(resourceHolderToUse);
 		String tid = null;
-		try {
-			boolean isExistingClient = (client != null);
-			if (!isExistingClient) {
-				client = resourceFactory.createClient();
-				resourceHolderToUse.addClient(client);
-			}
-			tid = resourceFactory.createTid(client);
-			resourceHolderToUse.addTid(tid, client);
+		boolean isExistingDestination = (destination != null);
+		if (!isExistingDestination) {
+			destination = resourceFactory.createDestination();
+			resourceHolderToUse.addDestination(destination);
 		}
-		catch (SapException ex) {
-			if (client != null) {
-				try {
-					sapSystem.releaseClient(client);
-				}
-				catch (Throwable ex2) {
-					// ignore
-				}
-			}
-			throw ex;
-		}
+		tid = resourceFactory.createTid(destination);
+		resourceHolderToUse.addTid(tid, destination);
 		if (resourceHolderToUse != resourceHolder) {
 			TransactionSynchronizationManager.registerSynchronization(
 					new JcoResourceSynchronization(
@@ -204,15 +177,15 @@ public abstract class ClientFactoryUtils {
 	}
 
 	/**
-	 * Obtain a JCO.Client that is synchronized with the current transaction, if any.
+	 * Obtain a JCoDestination that is synchronized with the current transaction, if any.
 	 * @param sapSystem the JMS SapSystem to bind for
 	 * (used as TransactionSynchronizationManager key)
 	 * @param resourceFactory the ResourceFactory to use for extracting or creating
 	 * JMS resources
-	 * @return the transactional JCO.Client, or <code>null</code> if none found
-	 * @throws JMSException in case of JMS failure
+	 * @return the transactional JCoDestination, or <code>null</code> if none found
+	 * @throws JCoException in case of failure
 	 */
-	public static JCO.Client doGetTransactionalClient(SapSystem sapSystem, ResourceFactory resourceFactory) throws SapException
+	public static JCoDestination doGetTransactionalDestination(SapSystem sapSystem, ResourceFactory resourceFactory) throws JCoException
 			{
 
 		Assert.notNull(sapSystem, "SapSystem must not be null");
@@ -221,9 +194,9 @@ public abstract class ClientFactoryUtils {
 		JcoResourceHolder resourceHolder =
 				(JcoResourceHolder) TransactionSynchronizationManager.getResource(sapSystem);
 		if (resourceHolder != null) {
-			JCO.Client client = resourceFactory.getClient(resourceHolder);
-			if (client != null) {
-				return client;
+			JCoDestination destination = resourceFactory.getDestination(resourceHolder);
+			if (destination != null) {
+				return destination;
 			}
 			if (resourceHolder.isFrozen()) {
 				return null;
@@ -236,21 +209,9 @@ public abstract class ClientFactoryUtils {
 		if (resourceHolderToUse == null) {
 			resourceHolderToUse = new JcoResourceHolder(sapSystem);
 		}
-		JCO.Client client=null;
-		try {
-			client = resourceFactory.createClient();
-		} catch (SapException ex) {
-			if (client != null) {
-				try {
-					sapSystem.releaseClient(client);
-				}
-				catch (Throwable ex2) {
-					// ignore
-				}
-			}
-			throw ex;
-		}
-		resourceHolderToUse.addClient(client);
+		JCoDestination destination=null;
+		destination = resourceFactory.createDestination();
+		resourceHolderToUse.addDestination(destination);
 		if (resourceHolderToUse != resourceHolder) {
 			TransactionSynchronizationManager.registerSynchronization(
 					new JcoResourceSynchronization(
@@ -258,7 +219,7 @@ public abstract class ClientFactoryUtils {
 			resourceHolderToUse.setSynchronizedWithTransaction(true);
 			TransactionSynchronizationManager.bindResource(sapSystem, resourceHolderToUse);
 		}
-		return client;
+		return destination;
 	}
 
 
@@ -277,26 +238,26 @@ public abstract class ClientFactoryUtils {
 		String getTid(JcoResourceHolder holder);
 
 		/**
-		 * Fetch an appropriate JCO.Client from the given JcoResourceHolder.
+		 * Fetch an appropriate JCoDestination from the given JcoResourceHolder.
 		 * @param holder the JcoResourceHolder
-		 * @return an appropriate JCO.Client fetched from the holder,
+		 * @return an appropriate JCoDestination fetched from the holder,
 		 * or <code>null</code> if none found
 		 */
-		JCO.Client getClient(JcoResourceHolder holder);
+		JCoDestination getDestination(JcoResourceHolder holder);
 
 		/**
-		 * Create a new JCO.Client for registration with a JcoResourceHolder.
-		 * @return the new JCO.Client
+		 * Create a new JCoDestination for registration with a JcoResourceHolder.
+		 * @return the new JCoDestination
 		 */
-		JCO.Client createClient() throws SapException;
+		JCoDestination createDestination() throws JCoException;
 
 		/**
 		 * Create a new Tid for registration with a JcoResourceHolder.
-		 * @param client the JCO.Client to create a String for
+		 * @param destination the JCoDestination to create a String for
 		 * @return the new Tid
-		 * @throws JMSException if thrown by API methods
+		 * @throws JCoException if thrown by API methods
 		 */
-		String createTid(JCO.Client client) throws SapException;
+		String createTid(JCoDestination destination) throws JCoException;
 
 		/**
 		 * Return whether to allow for a local JMS transaction that is synchronized with
@@ -345,9 +306,6 @@ public abstract class ClientFactoryUtils {
 		public void beforeCompletion() {
 			TransactionSynchronizationManager.unbindResource(this.resourceKey);
 			this.holderActive = false;
-			if (!this.synchedLocalTransacted) {
-				this.resourceHolder.closeAll();
-			}
 		}
 
 		public void afterCommit() {
@@ -357,12 +315,6 @@ public abstract class ClientFactoryUtils {
 				} catch (SapException ex) {
 					throw new SynchedLocalTransactionFailedException("Local JMS transaction failed to commit", ex);
 				}
-			}
-		}
-
-		public void afterCompletion(int status) {
-			if (this.synchedLocalTransacted) {
-				this.resourceHolder.closeAll();
 			}
 		}
 	}

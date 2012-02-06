@@ -1,6 +1,9 @@
 /*
  * $Log: SapFunctionFacade.java,v $
- * Revision 1.20  2011-11-30 13:51:54  europe\m168309
+ * Revision 1.1  2012-02-06 14:33:04  m00f069
+ * Implemented JCo 3 based on the JCo 2 code. JCo2 code has been moved to another package, original package now contains classes to detect the JCo version available and use the corresponding implementation.
+ *
+ * Revision 1.20  2011/11/30 13:51:54  peter
  * adjusted/reversed "Upgraded from WebSphere v5.1 to WebSphere v6.1"
  *
  * Revision 1.1  2011/10/19 14:49:52  peter
@@ -70,7 +73,7 @@
  * First version of SAP package
  *
  */
-package nl.nn.adapterframework.extensions.sap;
+package nl.nn.adapterframework.extensions.sap.jco3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,12 +87,14 @@ import nl.nn.adapterframework.util.LogUtil;
 import nl.nn.adapterframework.util.TransformerPool;
 import nl.nn.adapterframework.util.XmlUtils;
 
-import org.apache.commons.digester.Digester;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import com.sap.mw.jco.IFunctionTemplate;
-import com.sap.mw.jco.JCO;
+import com.sap.conn.jco.JCoFunction;
+import com.sap.conn.jco.JCoFunctionTemplate;
+import com.sap.conn.jco.JCoMetaData;
+import com.sap.conn.jco.JCoParameterList;
+import com.sap.conn.jco.JCoStructure;
 /**
  * Wrapper round SAP-functions, either SAP calling Ibis, or Ibis calling SAP.
  * <p><b>Configuration:</b>
@@ -108,11 +113,12 @@ import com.sap.mw.jco.JCO;
  * If no replyFieldIndex or replyFieldName is specified, output is converted from/to xml. 
  * </p>
  * @author  Gerrit van Brakel
- * @since   4.2
+ * @author  Jaco de Groot
+ * @since   5.0
  * @version Id
  */
 public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
-	public static final String version="$RCSfile: SapFunctionFacade.java,v $  $Revision: 1.20 $ $Date: 2011-11-30 13:51:54 $";
+	public static final String version="$RCSfile: SapFunctionFacade.java,v $  $Revision: 1.1 $ $Date: 2012-02-06 14:33:04 $";
 	protected Logger log = LogUtil.getLogger(this);
 
 	private String name;
@@ -125,7 +131,7 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 	private int replyFieldIndex=0;
 	private String replyFieldName;
 
-	private IFunctionTemplate ftemplate;
+	private JCoFunctionTemplate ftemplate;
 	private SapSystem sapSystem;
 	private boolean fieldIndicesCalculated=false;
 
@@ -188,38 +194,41 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 
 
 
-	static protected void setParameters(JCO.ParameterList params, String message, int fieldIndex) throws SapException {
+	static protected void setParameters(JCoParameterList params, String message, int fieldIndex) throws SapException {
 		if (params != null && StringUtils.isNotEmpty(message)) {
 			if (fieldIndex>0) {
 				params.setValue(message,fieldIndex-1);
 			} else {
-				String paramName=params.getName();
-				TransformerPool tp = (TransformerPool)extractors.get(paramName);
-				if (tp==null) {
+				JCoMetaData metaData = params.getMetaData();
+				for (int i = 0; i < metaData.getFieldCount(); i++) {
+					String paramName=params.getMetaData().getName(i);
+					TransformerPool tp = (TransformerPool)extractors.get(paramName);
+					if (tp==null) {
+						try {
+//							log.debug("creating evaluator for parameter ["+paramName+"]");
+							tp = new TransformerPool(XmlUtils.createXPathEvaluatorSource("/*/INPUT/"+paramName,"text"));
+							extractors.put(paramName,tp);
+						} catch (Exception e) {
+							throw new SapException("exception creating Extractor for  ["+paramName+"]", e);
+						}
+					}
 					try {
-//						log.debug("creating evaluator for parameter ["+paramName+"]");
-						tp = new TransformerPool(XmlUtils.createXPathEvaluatorSource("/*/"+paramName,"xml"));
-						extractors.put(paramName,tp);
+						String paramValue = tp.transform(message,null);
+						if (StringUtils.isNotEmpty(paramValue)) {
+//							log.debug("parameters ["+params.getName()+"] Xml ["+paramsXml+"]");
+							params.setValue(i, paramValue);
+						}
 					} catch (Exception e) {
-						throw new SapException("exception creating Extractor for  ["+paramName+"]", e);
+						throw new SapException("exception extracting ["+paramName+"]", e);
 					}
-				}
-				try {
-					String paramsXml = tp.transform(message,null);
-					if (StringUtils.isNotEmpty(paramsXml)) {
-						//log.debug("parameters ["+params.getName()+"] Xml ["+paramsXml+"]");
-						params.fromXML(paramsXml);
-					}
-				} catch (Exception e) {
-					throw new SapException("exception extracting ["+paramName+"]", e);
 				}
 			}
 		}
 	}
 
-	static protected void setTables(JCO.ParameterList tableParams, String message) throws SapException {
+	static protected void setTables(JCoParameterList tableParams, String message) throws SapException {
 		if (tableParams != null && StringUtils.isNotEmpty(message)) {
-			String paramsName=tableParams.getName();
+			String paramsName=tableParams.getMetaData().getName();
 			TransformerPool tp = (TransformerPool)extractors.get(paramsName);
 			if (tp==null) {
 				try {
@@ -245,7 +254,7 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 	 * This method must be called from configure().
 	 * @param ft
 	 */
-	protected void calculateStaticFieldIndices(IFunctionTemplate ft) {
+	protected void calculateStaticFieldIndices(JCoFunctionTemplate ft) {
 		if (getRequestFieldIndex()== 0) {	
 			if (StringUtils.isEmpty(getRequestFieldName())) {
 				setRequestFieldIndex(-1);
@@ -283,20 +292,20 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 	 *  >0 : the required index
 	 *  0  : no index found, convert all fields to/from xml.
 	 */
-	protected int findFieldIndex(JCO.ParameterList params, int index, String name) {
+	protected int findFieldIndex(JCoParameterList params, int index, String name) {
 		if (index!=0 || StringUtils.isEmpty(name)) {
 			return index;
 		}
 		try {
-			return (1+params.indexOf(name));
+			return (1+params.getListMetaData().indexOf(name));
 		} catch (Exception e) {
 			log.warn("["+getName()+"] exception finding FieldIndex for name ["+name+"]", e);
 			return 0;
 		}
 	}
 
-	public String getCorrelationIdFromField(JCO.Function function) {
-		JCO.ParameterList input = function.getImportParameterList();
+	public String getCorrelationIdFromField(JCoFunction function) {
+		JCoParameterList input = function.getImportParameterList();
 		int correlationIdFieldIndex = findFieldIndex(input, getCorrelationIdFieldIndex(), getCorrelationIdFieldName());
 		if (correlationIdFieldIndex>0 && input!=null) {
 				return input.getString(correlationIdFieldIndex-1);
@@ -305,8 +314,8 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 	}
 
 
-	public String functionCall2message(JCO.Function function) {
-		JCO.ParameterList input = function.getImportParameterList();
+	public String functionCall2message(JCoFunction function) {
+		JCoParameterList input = function.getImportParameterList();
 		
 		int messageFieldIndex = findFieldIndex(input, getRequestFieldIndex(), getRequestFieldName());
 		String result=null;
@@ -317,7 +326,7 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 		} else {
 			result = "<request function=\""+function.getName()+"\">";
 	
-			JCO.ParameterList tables = function.getTableParameterList();
+			JCoParameterList tables = function.getTableParameterList();
 			
 			if (input!=null) {
 				result+=input.toXML();
@@ -331,8 +340,8 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 		return result;
 	}
 
-	public String functionResult2message(JCO.Function function) {
-		JCO.ParameterList export = function.getExportParameterList();
+	public String functionResult2message(JCoFunction function) {
+		JCoParameterList export = function.getExportParameterList();
 		
 		int replyFieldIndex = findFieldIndex(export, getReplyFieldIndex(), getReplyFieldName());
 		String result=null;
@@ -343,7 +352,7 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 		} else {
 			result = "<response function=\""+function.getName()+"\">";
 
-			JCO.ParameterList tables = function.getTableParameterList();
+			JCoParameterList tables = function.getTableParameterList();
 		
 			if (export!=null) {
 				result+=export.toXML();
@@ -356,8 +365,8 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 		return result;
 	}
 
-	public void message2FunctionCall(JCO.Function function, String request, String correlationId, ParameterValueList pvl) throws SapException {
-		JCO.ParameterList input = function.getImportParameterList();
+	public void message2FunctionCall(JCoFunction function, String request, String correlationId, ParameterValueList pvl) throws SapException {
+		JCoParameterList input = function.getImportParameterList();
 		int requestFieldIndex = findFieldIndex(input, getRequestFieldIndex(), getRequestFieldName());
 		setParameters(input, request, requestFieldIndex);
 		if (requestFieldIndex<=0) {
@@ -374,7 +383,7 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 				} else {
 					String structName=name.substring(0,slashPos);
 					String elemName=name.substring(slashPos+1);
-					JCO.Structure struct=input.getStructure(structName);
+					JCoStructure struct=input.getStructure(structName);
 					struct.setValue(value,elemName);
 				}
 			}
@@ -385,8 +394,8 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 		}
 	}
 
-	public void message2FunctionResult(JCO.Function function, String result) throws SapException {
-		JCO.ParameterList output = function.getExportParameterList();
+	public void message2FunctionResult(JCoFunction function, String result) throws SapException {
+		JCoParameterList output = function.getExportParameterList();
 		int replyFieldIndex = findFieldIndex(output, getReplyFieldIndex(), getReplyFieldName());
 		setParameters(function.getExportParameterList(),result, replyFieldIndex);
 		//log.warn("SapFunctionFacade.message2FunctionResult, skipped setting of return table parameters");
@@ -412,14 +421,14 @@ public class SapFunctionFacade implements INamedObject, HasPhysicalDestination {
 	}
 
 
-	protected IFunctionTemplate getFunctionTemplate() throws SapException {
+	protected JCoFunctionTemplate getFunctionTemplate() throws SapException {
 		if(ftemplate==null) {
 			throw new SapException("no fixed functionName specified");
 		}
 		return ftemplate;
 	}
-	protected IFunctionTemplate getFunctionTemplate(SapSystem sapSystem, String functionName) throws SapException {
-		IFunctionTemplate functionTemplate;
+	protected JCoFunctionTemplate getFunctionTemplate(SapSystem sapSystem, String functionName) throws SapException {
+		JCoFunctionTemplate functionTemplate;
 		try {
 			functionTemplate = sapSystem.getJcoRepository().getFunctionTemplate(functionName);
 		} catch (Exception e) {
