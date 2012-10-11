@@ -1,6 +1,9 @@
 /*
  * $Log: Wsdl.java,v $
- * Revision 1.16  2012-10-10 09:43:53  m00f069
+ * Revision 1.17  2012-10-11 09:10:43  m00f069
+ * To lower case on targetAddress destination (QUEUE -> queue)
+ *
+ * Revision 1.16  2012/10/10 09:43:53  jaco
  * Added comment on ESB_SOAP_JMS
  *
  * Revision 1.15  2012/10/04 11:28:57  jaco
@@ -728,10 +731,8 @@ class Wsdl {
                         w.writeEndElement();
                     }
                     w.writeStartElement(ESB_SOAP_JMS, "targetAddress"); {
-                        String destinationType = listener.getDestinationType();
-                        if (destinationType != null) {
-                            w.writeAttribute("destination", destinationType);
-                        }
+                        w.writeAttribute("destination",
+                                listener.getDestinationType().toLowerCase());
                         String queueName = listener.getPhysicalDestinationShortName();
                         if (queueName == null) {
                             queueName = "queueName-for-"
