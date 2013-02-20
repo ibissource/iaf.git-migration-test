@@ -85,7 +85,7 @@ import org.apache.commons.lang.StringUtils;
  * </table>
  * </p>
  * @version $Id$
- * @author richard / Gerrit van Brakel
+ * @author Richard Punt / Gerrit van Brakel
  */
 public class IncreaseIntegerPipe extends FixedForwardPipe {
 

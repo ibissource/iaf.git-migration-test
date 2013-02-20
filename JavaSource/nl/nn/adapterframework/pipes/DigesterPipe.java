@@ -71,7 +71,7 @@ import org.apache.commons.digester.xmlrules.DigesterLoader;
  * <tr><td>"success"</td><td>default</td></tr>
  * </table></p>
  * @version $Id$ 
- * @author richard
+ * @author Richard Punt
  * @since 4.0.1 : adjustments to support multi-threading
  */
 
