@@ -28,7 +28,7 @@
  * Add custom versions of IFSA MDB Receiver beans, and subclass of IFSA ServiceLocatorEJB
  *
  *
- * $Id: CustomIfsaRRReceiverMDB.java,v 1.4 2011-11-30 13:51:58 europe\m168309 Exp $
+ * $Id$
  *
  */
 package nl.nn.adapterframework.extensions.ifsa.ejb;

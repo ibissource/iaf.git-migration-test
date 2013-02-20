@@ -6,7 +6,7 @@ public class DomBuilderException extends NestableException {
 	
 /**
  * DomBuilderException constructor comment.
- * <p>$Id: DomBuilderException.java,v 1.4 2011-11-30 13:51:49 europe\m168309 Exp $</p>
+ * <p>$Id$</p>
  */
 public DomBuilderException() {
 	super();
