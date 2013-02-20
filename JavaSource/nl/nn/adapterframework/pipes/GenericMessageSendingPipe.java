@@ -15,7 +15,7 @@
 */
 /*
  * $Log: GenericMessageSendingPipe.java,v $
- * Revision 1.14  2011-12-08 13:01:59  europe\m168309
+ * Revision 1.14  2011-12-08 13:01:59  peter
  * fixed javadoc
  *
  * Revision 1.13  2011/11/30 13:51:50  peter

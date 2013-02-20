@@ -15,7 +15,7 @@
 */
 /*
  * $Log: OracleDbmsSupport.java,v $
- * Revision 1.7  2012-04-17 11:51:14  europe\m168309
+ * Revision 1.7  2012-04-17 11:51:14  peter
  * The syntax "NOWAIT SKIP LOCKED" is not accepted in Oracle 11.2. The "NOWAIT" keyword and "SKIP LOCKED" keyword have become mutually exclusive. Remove the "NOWAIT" if you want to use "SKIP LOCKED".
  *
  * Revision 1.6  2011/11/30 13:51:45  peter

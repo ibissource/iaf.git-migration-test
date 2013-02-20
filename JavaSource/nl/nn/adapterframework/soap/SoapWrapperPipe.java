@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SoapWrapperPipe.java,v $
- * Revision 1.12  2013-01-03 10:53:05  europe\m168309
+ * Revision 1.12  2013-01-03 10:53:05  peter
  * added removeUnusedOutputNamespaces attribute
  *
  * Revision 1.11  2012/10/08 12:14:44  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Misc.java,v $
- * Revision 1.36  2011-12-08 09:29:08  europe\m168309
+ * Revision 1.36  2011-12-08 09:29:08  peter
  * fixed javadoc
  *
  * Revision 1.35  2011/11/30 13:51:49  peter

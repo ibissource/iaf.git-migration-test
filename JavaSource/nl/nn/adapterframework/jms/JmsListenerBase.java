@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JmsListenerBase.java,v $
- * Revision 1.17  2013-01-30 15:37:42  europe\m168309
+ * Revision 1.17  2013-01-30 15:37:42  peter
  * separate method retrieveIdFromMessage for method getIdFromRawMessage
  *
  * Revision 1.16  2012/06/01 10:52:48  jaco

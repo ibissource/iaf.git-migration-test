@@ -15,7 +15,7 @@
 */
 /*
  * $Log: DateUtils.java,v $
- * Revision 1.18  2012-12-13 10:40:18  europe\m168309
+ * Revision 1.18  2012-12-13 10:40:18  peter
  * added parseXmlDateTime() method
  *
  * Revision 1.17  2011/11/30 13:51:48  peter

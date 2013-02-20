@@ -15,7 +15,7 @@
 */
 /*
  * $Log: EsbJmsSender.java,v $
- * Revision 1.7  2012-08-31 13:54:04  europe\m168309
+ * Revision 1.7  2012-08-31 13:54:04  peter
  * changed derivation for soapAction attribute
  *
  * Revision 1.6  2012/08/30 14:08:24  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Browse.java,v $
- * Revision 1.26  2012-12-28 14:02:02  europe\m168309
+ * Revision 1.26  2012-12-28 14:02:02  peter
  * added total number of records to title
  *
  * Revision 1.25  2011/11/30 13:51:46  peter

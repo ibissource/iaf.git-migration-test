@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ShowIbisstoreSummary.java,v $
- * Revision 1.10  2012-04-04 09:45:52  europe\m168309
+ * Revision 1.10  2012-04-04 09:45:52  peter
  * fixed empty result issue (caused in v4_12_a10)
  *
  * Revision 1.9  2011/11/30 13:51:46  peter

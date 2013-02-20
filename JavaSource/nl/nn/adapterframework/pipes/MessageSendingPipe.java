@@ -15,7 +15,7 @@
 */
 /*
  * $Log: MessageSendingPipe.java,v $
- * Revision 1.83  2013-01-25 13:34:20  europe\m168309
+ * Revision 1.83  2013-01-25 13:34:20  peter
  * added useInputForExtract attribute
  *
  * Revision 1.82  2012/10/24 14:14:08  peter

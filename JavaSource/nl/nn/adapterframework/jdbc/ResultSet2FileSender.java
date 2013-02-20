@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ResultSet2FileSender.java,v $
- * Revision 1.4  2012-12-06 11:24:08  europe\m168309
+ * Revision 1.4  2012-12-06 11:24:08  peter
  * javadoc
  *
  * Revision 1.3  2012/11/21 10:23:54  peter

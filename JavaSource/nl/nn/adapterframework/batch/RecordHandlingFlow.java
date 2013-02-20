@@ -15,7 +15,7 @@
 */
 /*
  * $Log: RecordHandlingFlow.java,v $
- * Revision 1.17  2012-04-03 08:13:12  europe\m168309
+ * Revision 1.17  2012-04-03 08:13:12  peter
  * added ConfigurationException for openBlockBeforeLineNumber
  *
  * Revision 1.16  2011/11/30 13:51:56  peter

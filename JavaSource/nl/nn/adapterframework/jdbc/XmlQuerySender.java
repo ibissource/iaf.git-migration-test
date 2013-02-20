@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XmlQuerySender.java,v $
- * Revision 1.10  2012-12-13 10:42:35  europe\m168309
+ * Revision 1.10  2012-12-13 10:42:35  peter
  * added type xmldatetime
  *
  * Revision 1.9  2011/11/30 13:51:43  peter

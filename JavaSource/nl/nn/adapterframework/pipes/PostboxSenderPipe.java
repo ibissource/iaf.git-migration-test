@@ -15,7 +15,7 @@
 */
 /*
  * $Log: PostboxSenderPipe.java,v $
- * Revision 1.7  2011-11-30 13:51:50  europe\m168309
+ * Revision 1.7  2011-11-30 13:51:50  peter
  * adjusted/reversed "Upgraded from WebSphere v5.1 to WebSphere v6.1"
  *
  * Revision 1.2  2011/10/19 15:01:14  peter

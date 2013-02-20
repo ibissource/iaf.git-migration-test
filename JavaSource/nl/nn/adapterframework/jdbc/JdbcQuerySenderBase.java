@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JdbcQuerySenderBase.java,v $
- * Revision 1.60  2012-12-07 13:16:06  europe\m168309
+ * Revision 1.60  2012-12-07 13:16:06  peter
  * added debug logging
  *
  * Revision 1.59  2011/11/30 13:51:43  peter

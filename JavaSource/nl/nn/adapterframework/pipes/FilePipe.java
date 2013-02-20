@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FilePipe.java,v $
- * Revision 1.36  2013-02-12 15:38:08  europe\m168309
+ * Revision 1.36  2013-02-12 15:38:08  peter
  * added skipBOM attribute
  *
  * Revision 1.35  2012/11/07 15:03:49  jaco

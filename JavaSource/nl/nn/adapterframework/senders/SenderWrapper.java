@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SenderWrapper.java,v $
- * Revision 1.12  2011-12-08 13:02:00  europe\m168309
+ * Revision 1.12  2011-12-08 13:02:00  peter
  * fixed javadoc
  *
  * Revision 1.11  2011/11/30 13:52:00  peter

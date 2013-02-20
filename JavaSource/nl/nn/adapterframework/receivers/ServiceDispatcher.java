@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ServiceDispatcher.java,v $
- * Revision 1.15  2012-02-01 12:55:42  europe\m168309
+ * Revision 1.15  2012-02-01 12:55:42  peter
  * added received message to debug logging
  *
  * Revision 1.14  2011/11/30 13:51:54  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ShowSecurityItems.java,v $
- * Revision 1.10  2012-06-06 13:12:49  europe\m168309
+ * Revision 1.10  2012-06-06 13:12:49  peter
  * fixed bug empty Role in Security Role Bindings
  *
  * Revision 1.9  2011/11/30 13:51:46  peter

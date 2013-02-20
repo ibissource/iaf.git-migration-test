@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SoapWrapper.java,v $
- * Revision 1.19  2012-02-28 13:26:39  europe\m168309
+ * Revision 1.19  2012-02-28 13:26:39  peter
  * adjustable soap envelope namespace
  *
  * Revision 1.18  2012/02/01 10:49:56  peter

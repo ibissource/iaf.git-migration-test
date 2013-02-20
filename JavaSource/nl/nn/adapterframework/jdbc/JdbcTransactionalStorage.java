@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JdbcTransactionalStorage.java,v $
- * Revision 1.58  2012-04-04 09:05:15  europe\m168309
+ * Revision 1.58  2012-04-04 09:05:15  peter
  * split order for messageLog (DESC) and errorStorage (ASC)
  *
  * Revision 1.57  2012/02/17 18:04:02  jaco

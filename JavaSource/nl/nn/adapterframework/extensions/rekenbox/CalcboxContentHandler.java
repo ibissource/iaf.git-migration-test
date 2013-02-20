@@ -14,7 +14,7 @@
    limitations under the License.
 */
 /* $Log: CalcboxContentHandler.java,v $
-/* Revision 1.6  2012-03-14 11:23:57  europe\m168309
+/* Revision 1.6  2012-03-14 11:23:57  peter
 /* use getTransformerFactory() from XmlUtils instead of own code
 /*
 /* Revision 1.5  2012/02/03 11:18:29  peter

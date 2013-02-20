@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FileHandler.java,v $
- * Revision 1.3  2013-02-12 15:44:15  europe\m168309
+ * Revision 1.3  2013-02-12 15:44:15  peter
  * added logging
  *
  * Revision 1.2  2013/02/12 15:07:25  peter

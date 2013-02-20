@@ -15,7 +15,7 @@
 */
 /*
  * $Log: StatisticsKeeperStore.java,v $
- * Revision 1.4  2011-11-30 13:52:03  europe\m168309
+ * Revision 1.4  2011-11-30 13:52:03  peter
  * adjusted/reversed "Upgraded from WebSphere v5.1 to WebSphere v6.1"
  *
  * Revision 1.1  2011/10/19 14:49:51  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Parameter.java,v $
- * Revision 1.47  2012-12-13 10:41:59  europe\m168309
+ * Revision 1.47  2012-12-13 10:41:59  peter
  * added type xmldatetime
  *
  * Revision 1.46  2012/12/12 09:46:53  peter

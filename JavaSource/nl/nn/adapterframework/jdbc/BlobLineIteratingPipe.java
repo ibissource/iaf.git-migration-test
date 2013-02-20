@@ -15,7 +15,7 @@
 */
 /*
  * $Log: BlobLineIteratingPipe.java,v $
- * Revision 1.9  2011-12-08 13:01:59  europe\m168309
+ * Revision 1.9  2011-12-08 13:01:59  peter
  * fixed javadoc
  *
  * Revision 1.8  2011/11/30 13:51:43  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: TibcoLogJmsListener.java,v $
- * Revision 1.2  2013-02-08 09:37:08  europe\m168309
+ * Revision 1.2  2013-02-08 09:37:08  peter
  * added contextId to logging record and put environment in sessionKey
  *
  * Revision 1.1  2013/01/31 10:00:05  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ShowConfigurationStatus.java,v $
- * Revision 1.28  2013-02-18 14:53:43  europe\m168309
+ * Revision 1.28  2013-02-18 14:53:43  peter
  * adjusted configWarning when errorlog is not empty
  *
  * Revision 1.27  2012/12/03 08:09:42  peter
