@@ -1,9 +1,9 @@
 Ibis framework
+==============
 
 This is the origal directory structure directly copied from CVS.
 
 The directories lib and WebContent/WEB-INF/lib were removed, because they contain proprietary libraries.
-
 
 Next step will be to 'mavenize' this project and split off maven modules that depend on these proprietary libraries. 
 
