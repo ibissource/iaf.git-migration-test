@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SynchedLocalTransactionFailedException.java,v $
- * Revision 1.1  2012-02-06 14:33:05  m00f069
+ * Revision 1.1  2012-02-06 14:33:05  jaco
  * Implemented JCo 3 based on the JCo 2 code. JCo2 code has been moved to another package, original package now contains classes to detect the JCo version available and use the corresponding implementation.
  *
  * Revision 1.3  2011/11/30 13:51:53  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: HttpSender.java,v $
- * Revision 1.57  2012-10-25 16:21:29  m00f069
+ * Revision 1.57  2012-10-25 16:21:29  jaco
  * Bugfix isParamsInUrl, when methodType isn't POST check the value not be false (instead of not to be true)
  *
  * Revision 1.56  2012/04/05 07:31:23  peter

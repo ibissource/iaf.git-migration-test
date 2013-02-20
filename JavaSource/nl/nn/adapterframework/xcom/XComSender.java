@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XComSender.java,v $
- * Revision 1.17  2012-06-01 10:52:59  m00f069
+ * Revision 1.17  2012-06-01 10:52:59  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.16  2011/12/08 09:12:09  peter

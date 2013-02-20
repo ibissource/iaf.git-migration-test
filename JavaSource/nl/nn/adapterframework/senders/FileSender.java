@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FileSender.java,v $
- * Revision 1.1  2012-10-05 15:45:31  m00f069
+ * Revision 1.1  2012-10-05 15:45:31  jaco
  * Introduced FileSender which is similar to FilePipe but can be used as a Sender (making is possible to have a MessageLog)
  *
  */

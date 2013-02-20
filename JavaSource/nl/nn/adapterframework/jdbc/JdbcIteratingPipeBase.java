@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JdbcIteratingPipeBase.java,v $
- * Revision 1.15  2012-06-01 10:52:52  m00f069
+ * Revision 1.15  2012-06-01 10:52:52  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.14  2012/02/17 18:04:02  jaco

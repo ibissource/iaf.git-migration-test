@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SapSender.java,v $
- * Revision 1.17  2012-02-06 14:33:04  m00f069
+ * Revision 1.17  2012-02-06 14:33:04  jaco
  * Implemented JCo 3 based on the JCo 2 code. JCo2 code has been moved to another package, original package now contains classes to detect the JCo version available and use the corresponding implementation.
  *
  */

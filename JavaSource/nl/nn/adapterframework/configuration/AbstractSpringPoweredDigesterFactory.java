@@ -15,7 +15,7 @@
 */
 /*
  * $Log: AbstractSpringPoweredDigesterFactory.java,v $
- * Revision 1.24  2013-02-09 13:47:03  m00f069
+ * Revision 1.24  2013-02-09 13:47:03  jaco
  * Prevent InvocationTargetException/NullPointerException in logging when checking for default value of ignoreUnknownNamespaces.
  * Bugfix invalid warning "already has a default value" for ignoreUnknownNamespaces (depends on value of schemaLocation, schema and noNamespaceSchemaLocation).
  *

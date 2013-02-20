@@ -15,7 +15,7 @@
 */
 /*
  * $Log: PullingJmsListener.java,v $
- * Revision 1.14  2012-09-07 13:15:17  m00f069
+ * Revision 1.14  2012-09-07 13:15:17  jaco
  * Messaging related changes:
  * - Use CACHE_CONSUMER by default for ESB RR
  * - Don't use JMSXDeliveryCount to determine whether message has already been processed

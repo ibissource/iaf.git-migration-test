@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SapSystem.java,v $
- * Revision 1.2  2012-03-12 15:23:00  m00f069
+ * Revision 1.2  2012-03-12 15:23:00  jaco
  * Implemented logon group properties
  *
  * Revision 1.1  2012/02/06 14:33:04  jaco

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: TransformerPool.java,v $
- * Revision 1.26  2012-08-10 11:29:11  m00f069
+ * Revision 1.26  2012-08-10 11:29:11  jaco
  * Use ErrorListener on transformer to detect and throw exceptions which were thrown directly by older Xalan version.
  *
  * Revision 1.25  2012/03/14 11:23:39  peter

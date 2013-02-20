@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Locker.java,v $
- * Revision 1.1  2012-10-10 10:19:37  m00f069
+ * Revision 1.1  2012-10-10 10:19:37  jaco
  * Made it possible to use Locker on Pipe level too
  *
  * Revision 1.5  2011/11/30 13:51:42  peter

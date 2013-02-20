@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Wsdl.java,v $
- * Revision 1.35  2013-02-11 11:15:10  m00f069
+ * Revision 1.35  2013-02-11 11:15:10  jaco
  * Prevent problems when queueConnectionFactoryName on listener not specified and otap.stage not set, instead print a warning
  *
  * Revision 1.34  2013/02/01 13:36:24  jaco

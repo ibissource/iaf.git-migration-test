@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SapListener.java,v $
- * Revision 1.3  2012-06-14 14:13:49  m00f069
+ * Revision 1.3  2012-06-14 14:13:49  jaco
  * Bugfix recursive call in JCoQueuedIDocHandler implementation
  * Ignore pipeline reply for IDoc in afterMessageProcessed
  *

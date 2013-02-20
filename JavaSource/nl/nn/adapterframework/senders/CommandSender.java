@@ -15,7 +15,7 @@
 */
 /*
  * $Log: CommandSender.java,v $
- * Revision 1.11  2012-04-19 16:15:58  m00f069
+ * Revision 1.11  2012-04-19 16:15:58  jaco
  * Added default value in docs for commandWithArguments
  *
  * Revision 1.10  2011/11/30 13:52:00  peter

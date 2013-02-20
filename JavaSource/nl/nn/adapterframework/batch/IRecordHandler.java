@@ -15,7 +15,7 @@
 */
 /*
  * $Log: IRecordHandler.java,v $
- * Revision 1.13  2012-06-01 10:52:49  m00f069
+ * Revision 1.13  2012-06-01 10:52:49  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.12  2011/11/30 13:51:56  peter

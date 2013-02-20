@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FxfSender.java,v $
- * Revision 1.18  2012-08-15 08:08:20  m00f069
+ * Revision 1.18  2012-08-15 08:08:20  jaco
  * Implemented FxF3 listener as a wrapper and FxF3 cleanup mechanism
  *
  * Revision 1.17  2011/11/30 13:51:51  peter

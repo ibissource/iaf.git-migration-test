@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XfbSender.java,v $
- * Revision 1.1  2012-01-10 09:49:15  m00f069
+ * Revision 1.1  2012-01-10 09:49:15  jaco
  * Added XfbSender
  *
  */

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XmlValidatorContentHandler.java,v $
- * Revision 1.1  2012-10-26 16:13:38  m00f069
+ * Revision 1.1  2012-10-26 16:13:38  jaco
  * Moved *Xmlvalidator*, Schema and SchemasProvider to new validation package
  *
  * Revision 1.9  2012/10/19 09:33:47  jaco

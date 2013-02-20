@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XercesXmlValidator.java,v $
- * Revision 1.4  2012-12-07 15:09:50  m00f069
+ * Revision 1.4  2012-12-07 15:09:50  jaco
  * Bugfix xml validation when using schemaSessionKey (first encountered xsd was reused on every call) (previous bugfix attempt "made preparse synchronized to prevent wrong validation when using schemaSessionKey" did not solve the issue in the environment)
  *
  * Revision 1.3  2012/12/06 15:19:28  jaco

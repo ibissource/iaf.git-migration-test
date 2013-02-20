@@ -15,7 +15,7 @@
 */
 /*
  * $Log: LobLineIteratingPipeBase.java,v $
- * Revision 1.5  2012-02-17 18:04:02  m00f069
+ * Revision 1.5  2012-02-17 18:04:02  jaco
  * Use proxiedDataSources for JdbcIteratingPipeBase too
  * Call close on original/proxied connection instead of connection from statement that might be the unproxied connection
  *

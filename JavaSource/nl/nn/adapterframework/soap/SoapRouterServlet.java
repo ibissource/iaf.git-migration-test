@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SoapRouterServlet.java,v $
- * Revision 1.5  2012-03-19 15:07:22  m00f069
+ * Revision 1.5  2012-03-19 15:07:22  jaco
  * Bugfix mangled file name of WSDL when adapter name contains a space
  *
  * Revision 1.4  2011/12/15 09:55:31  jaco

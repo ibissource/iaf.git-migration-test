@@ -15,7 +15,7 @@
 */
 /*
  * $Log: EsbSoapValidator.java,v $
- * Revision 1.10  2012-10-19 09:33:48  m00f069
+ * Revision 1.10  2012-10-19 09:33:48  jaco
  * Made WsdlXmlValidator extent Xml/SoapValidator to make it use the same validation logic, cleaning XercesXmlValidator on the way
  *
  * Revision 1.9  2012/10/01 07:59:29  jaco

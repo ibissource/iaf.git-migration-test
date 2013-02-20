@@ -15,7 +15,7 @@
 */
 /*
  * $Log: AuthSSLProtocolSocketFactoryForJsse10x.java,v $
- * Revision 1.17  2012-03-16 10:37:09  m00f069
+ * Revision 1.17  2012-03-16 10:37:09  jaco
  * Unified use of allowSelfSignedCertificates property for ftp and http sender
  *
  * Revision 1.16  2012/03/15 16:53:59  jaco

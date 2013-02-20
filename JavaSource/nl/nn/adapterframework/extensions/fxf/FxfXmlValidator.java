@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FxfXmlValidator.java,v $
- * Revision 1.2  2012-12-03 19:53:49  m00f069
+ * Revision 1.2  2012-12-03 19:53:49  jaco
  * Bugfix NullPointerException as a result of changes in init/configure methods in underlying classes.
  * Added check on soap header/body root element.
  *

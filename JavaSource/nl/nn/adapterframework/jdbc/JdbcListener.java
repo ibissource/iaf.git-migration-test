@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JdbcListener.java,v $
- * Revision 1.16  2012-06-01 10:52:56  m00f069
+ * Revision 1.16  2012-06-01 10:52:56  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.15  2011/11/30 13:51:43  peter

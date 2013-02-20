@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ProcessUtil.java,v $
- * Revision 1.9  2012-05-10 10:41:37  m00f069
+ * Revision 1.9  2012-05-10 10:41:37  jaco
  * Fixed javadoc: milliseconds -> seconds
  *
  * Revision 1.8  2011/12/08 11:02:10  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SapFunctionFacade.java,v $
- * Revision 1.9  2012-05-31 10:27:55  m00f069
+ * Revision 1.9  2012-05-31 10:27:55  jaco
  * Check whether SAP is expecting a reply before trying to parse XML
  *
  * Revision 1.8  2012/05/15 22:13:44  jaco

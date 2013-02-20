@@ -15,7 +15,7 @@
 */
 /*
  * $Log: WebServiceSender.java,v $
- * Revision 1.43  2012-06-21 15:52:41  m00f069
+ * Revision 1.43  2012-06-21 15:52:41  jaco
  * Restored logging of SOAP message on debug level
  *
  * Revision 1.42  2012/04/05 07:30:29  peter

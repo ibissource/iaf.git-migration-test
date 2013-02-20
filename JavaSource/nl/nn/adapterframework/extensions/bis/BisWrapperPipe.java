@@ -15,7 +15,7 @@
 */
 /*
  * $Log: BisWrapperPipe.java,v $
- * Revision 1.10  2012-06-01 10:52:57  m00f069
+ * Revision 1.10  2012-06-01 10:52:57  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.9  2012/01/24 11:33:23  peter

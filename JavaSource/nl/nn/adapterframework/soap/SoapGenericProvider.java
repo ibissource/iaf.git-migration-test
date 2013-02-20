@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SoapGenericProvider.java,v $
- * Revision 1.11  2012-06-11 13:10:01  m00f069
+ * Revision 1.11  2012-06-11 13:10:01  jaco
  * Log incoming SOAP message on debug level
  *
  * Revision 1.10  2012/06/01 10:52:48  jaco

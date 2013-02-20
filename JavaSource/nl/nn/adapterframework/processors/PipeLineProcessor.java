@@ -15,7 +15,7 @@
 */
 /*
  * $Log: PipeLineProcessor.java,v $
- * Revision 1.7  2012-11-22 13:41:05  m00f069
+ * Revision 1.7  2012-11-22 13:41:05  jaco
  * Made it possible to use Locker on PipeLine level too
  *
  * Revision 1.6  2012/06/01 10:52:49  jaco

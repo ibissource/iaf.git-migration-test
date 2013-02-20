@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FTPsClient.java,v $
- * Revision 1.14  2012-03-16 10:37:09  m00f069
+ * Revision 1.14  2012-03-16 10:37:09  jaco
  * Unified use of allowSelfSignedCertificates property for ftp and http sender
  *
  * Revision 1.13  2011/12/20 12:11:53  gerrit

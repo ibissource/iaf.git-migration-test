@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JMSFacade.java,v $
- * Revision 1.51  2012-09-27 13:44:31  m00f069
+ * Revision 1.51  2012-09-27 13:44:31  jaco
  * Updates in generating wsdl namespace, wsdl input message name, wsdl output message name, wsdl port type name and wsdl operation name in case of EsbSoap
  *
  * Revision 1.50  2012/09/07 13:15:17  jaco

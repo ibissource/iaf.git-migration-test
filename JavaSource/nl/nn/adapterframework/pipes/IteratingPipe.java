@@ -15,7 +15,7 @@
 */
 /*
  * $Log: IteratingPipe.java,v $
- * Revision 1.28  2012-09-13 13:16:32  m00f069
+ * Revision 1.28  2012-09-13 13:16:32  jaco
  *  Use StringBuffer to collect results for better performance
  *
  * Revision 1.27  2012/08/29 12:53:50  peter

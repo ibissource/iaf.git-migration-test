@@ -15,7 +15,7 @@
 */
 /*
  * $Log: SoapValidator.java,v $
- * Revision 1.13  2012-10-19 11:54:07  m00f069
+ * Revision 1.13  2012-10-19 11:54:07  jaco
  * Bugfix double occurrence of CommonMessageHeader.xsd in schemaLocation
  *
  * Revision 1.12  2012/10/19 09:33:47  jaco

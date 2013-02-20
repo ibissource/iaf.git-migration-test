@@ -15,7 +15,7 @@
 */
 /*
  * $Log: AbstractXmlValidator.java,v $
- * Revision 1.3  2012-12-06 15:19:28  m00f069
+ * Revision 1.3  2012-12-06 15:19:28  jaco
  * Resolved warnings which showed up when using addNamespaceToSchema (src-include.2.1: The targetNamespace of the referenced schema..., src-resolve.4.2: Error resolving component...)
  * Handle includes in XSD's properly when generating a WSDL
  * Removed XSD download (unused and XSD's were not adjusted according to e.g. addNamespaceToSchema)

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XmlExternalEntityResolver.java,v $
- * Revision 1.1  2012-09-24 18:16:04  m00f069
+ * Revision 1.1  2012-09-24 18:16:04  jaco
  * Don't resolve external entities in DOCTYPE
  *
  */

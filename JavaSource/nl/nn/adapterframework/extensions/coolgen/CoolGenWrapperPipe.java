@@ -15,7 +15,7 @@
 */
 /*
  * $Log: CoolGenWrapperPipe.java,v $
- * Revision 1.8  2012-06-01 10:52:59  m00f069
+ * Revision 1.8  2012-06-01 10:52:59  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.7  2011/11/30 13:52:05  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: StructureHandler.java,v $
- * Revision 1.2  2012-05-23 16:10:20  m00f069
+ * Revision 1.2  2012-05-23 16:10:20  jaco
  * Fixed javadoc
  *
  * Revision 1.1  2012/05/15 22:13:44  jaco

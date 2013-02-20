@@ -15,7 +15,7 @@
 */
 /*
  * $Log: AppConstants.java,v $
- * Revision 1.22  2012-08-23 11:57:43  m00f069
+ * Revision 1.22  2012-08-23 11:57:43  jaco
  * Updates from Michiel
  *
  * Revision 1.21  2011/11/30 13:51:49  peter

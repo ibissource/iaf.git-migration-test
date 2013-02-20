@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Adapter.java,v $
- * Revision 1.66  2012-06-01 10:52:51  m00f069
+ * Revision 1.66  2012-06-01 10:52:51  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.65  2011/11/30 13:51:55  peter

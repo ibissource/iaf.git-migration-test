@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   $Log: springTOMCAT6.xml,v $
-  Revision 1.8  2012-09-13 15:49:24  m00f069
+  Revision 1.8  2012-09-13 15:49:24  jaco
   Added jndiContextPrefixPropertyPlaceholderConfigurer.
   Changed layout a bit.
 

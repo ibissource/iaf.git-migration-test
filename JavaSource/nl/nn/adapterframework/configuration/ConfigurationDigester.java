@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ConfigurationDigester.java,v $
- * Revision 1.40  2012-08-23 11:57:44  m00f069
+ * Revision 1.40  2012-08-23 11:57:44  jaco
  * Updates from Michiel
  *
  * Revision 1.39  2012/04/02 11:58:38  jaco

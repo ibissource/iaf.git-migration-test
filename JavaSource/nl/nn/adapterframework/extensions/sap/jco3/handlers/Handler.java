@@ -15,7 +15,7 @@
 */
 /*
  * $Log: Handler.java,v $
- * Revision 1.1  2012-05-15 22:13:44  m00f069
+ * Revision 1.1  2012-05-15 22:13:44  jaco
  * Allow nesting of (different) types in SAP XML
  *
  */

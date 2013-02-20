@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JsonPipe.java,v $
- * Revision 1.1  2012-06-21 12:09:10  m00f069
+ * Revision 1.1  2012-06-21 12:09:10  jaco
  * Added cleaned version from Bipa project (original version was created by Martijn)
  *
  */

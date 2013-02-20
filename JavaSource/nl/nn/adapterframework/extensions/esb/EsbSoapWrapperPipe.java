@@ -15,7 +15,7 @@
 */
 /*
  * $Log: EsbSoapWrapperPipe.java,v $
- * Revision 1.17  2012-10-03 14:26:17  m00f069
+ * Revision 1.17  2012-10-03 14:26:17  jaco
  * Added extra checks to isValidNamespace
  *
  * Revision 1.16  2012/09/28 14:39:47  jaco

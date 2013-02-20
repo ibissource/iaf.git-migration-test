@@ -15,7 +15,7 @@
 */
 /*
  * $Log: RecordXmlTransformer.java,v $
- * Revision 1.19  2012-06-01 10:52:48  m00f069
+ * Revision 1.19  2012-06-01 10:52:48  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.18  2011/11/30 13:51:56  peter

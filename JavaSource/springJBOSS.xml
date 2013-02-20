@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   $Log: springJBOSS.xml,v $
-  Revision 1.7  2012-10-16 11:16:05  m00f069
+  Revision 1.7  2012-10-16 11:16:05  jaco
   Restored jndiContextPrefix in the new way (old name was appServerJndiContextPrefix)
 
   Revision 1.6  2012/09/07 13:15:16  jaco

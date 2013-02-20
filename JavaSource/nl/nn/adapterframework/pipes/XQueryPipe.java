@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XQueryPipe.java,v $
- * Revision 1.1  2013-01-30 16:47:58  m00f069
+ * Revision 1.1  2013-01-30 16:47:58  jaco
  * Added XQueryPipe
  *
  */

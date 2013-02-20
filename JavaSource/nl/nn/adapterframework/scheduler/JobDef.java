@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JobDef.java,v $
- * Revision 1.26  2012-10-10 10:19:37  m00f069
+ * Revision 1.26  2012-10-10 10:19:37  jaco
  * Made it possible to use Locker on Pipe level too
  *
  * Revision 1.25  2012/09/28 14:14:16  jaco

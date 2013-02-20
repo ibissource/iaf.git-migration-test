@@ -15,7 +15,7 @@
 */
 /*
  * $Log: XmlUtils.java,v $
- * Revision 1.96  2013-01-29 14:03:21  m00f069
+ * Revision 1.96  2013-01-29 14:03:21  jaco
  * Remove double attributes in schema element of merged schema´s (WebSphere's XMLStreamWriter doesn't remove them)
  *
  * Revision 1.95  2013/01/03 10:49:10  peter

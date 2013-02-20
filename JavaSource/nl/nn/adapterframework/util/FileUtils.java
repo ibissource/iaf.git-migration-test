@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FileUtils.java,v $
- * Revision 1.29  2012-12-03 14:03:38  m00f069
+ * Revision 1.29  2012-12-03 14:03:38  jaco
  * Read oldest file first (instead of unsorted).
  * Made it possible to use processedDirectory in combination with fileList.
  *

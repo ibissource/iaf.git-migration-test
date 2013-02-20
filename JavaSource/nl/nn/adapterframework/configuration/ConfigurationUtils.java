@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ConfigurationUtils.java,v $
- * Revision 1.6  2012-09-25 13:11:36  m00f069
+ * Revision 1.6  2012-09-25 13:11:36  jaco
  * Use namespaceAware=true for active.xsl and stub4testtool.xsl now we are using SAXSource otherwise a NullPointerException seems to occur during transformation.
  *
  * Revision 1.5  2011/11/30 13:51:56  peter

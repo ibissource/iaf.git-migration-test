@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FxfPropertyPlaceholderConfigurer.java,v $
- * Revision 1.3  2012-11-02 09:28:33  m00f069
+ * Revision 1.3  2012-11-02 09:28:33  jaco
  * Changed log level from warn to debug when FxF directory not found (valid in case FxF isn't used)
  *
  * Revision 1.2  2012/09/07 13:15:17  jaco

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: JmsSender.java,v $
- * Revision 1.56  2012-09-19 21:48:04  m00f069
+ * Revision 1.56  2012-09-19 21:48:04  jaco
  * Added link method CORRELATIONID_FROM_MESSAGE to the jms sender
  *
  * Revision 1.55  2012/01/10 10:48:22  peter

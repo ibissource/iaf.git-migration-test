@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ReceiverBase.java,v $
- * Revision 1.105  2013-01-22 15:01:21  m00f069
+ * Revision 1.105  2013-01-22 15:01:21  jaco
  * Changed MAX_RETRY_INTERVAL from 600 to 100 to make it smaller than WebSphere default transaction timeout of 120
  *
  * Revision 1.104  2012/09/07 13:15:17  jaco

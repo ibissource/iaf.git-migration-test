@@ -15,7 +15,7 @@
 */
 /*
  * $Log: TestPipeLineExecute.java,v $
- * Revision 1.22  2012-06-01 10:52:59  m00f069
+ * Revision 1.22  2012-06-01 10:52:59  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.21  2011/11/30 13:51:46  peter

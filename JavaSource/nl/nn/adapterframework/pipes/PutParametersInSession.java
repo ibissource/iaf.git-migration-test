@@ -15,7 +15,7 @@
 */
 /*
  * $Log: PutParametersInSession.java,v $
- * Revision 1.2  2012-06-01 10:52:49  m00f069
+ * Revision 1.2  2012-06-01 10:52:49  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.1  2012/04/16 12:43:34  peter

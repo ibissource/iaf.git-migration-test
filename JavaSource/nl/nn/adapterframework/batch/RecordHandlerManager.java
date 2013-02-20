@@ -15,7 +15,7 @@
 */
 /*
  * $Log: RecordHandlerManager.java,v $
- * Revision 1.15  2012-06-01 10:52:48  m00f069
+ * Revision 1.15  2012-06-01 10:52:48  jaco
  * Created IPipeLineSession (making it easier to write a debugger around it)
  *
  * Revision 1.14  2012/01/27 13:35:27  peter

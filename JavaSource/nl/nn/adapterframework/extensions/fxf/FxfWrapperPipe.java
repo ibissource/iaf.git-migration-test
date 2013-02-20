@@ -15,7 +15,7 @@
 */
 /*
  * $Log: FxfWrapperPipe.java,v $
- * Revision 1.6  2012-09-14 07:18:12  m00f069
+ * Revision 1.6  2012-09-14 07:18:12  jaco
  * Reverting last change of removal of Ibis name from transferFlowId, shouldn't be send by FxF after all.
  *
  * Revision 1.5  2012/09/05 09:00:16  jaco

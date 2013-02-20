@@ -15,7 +15,7 @@
 */
 /*
  * $Log: ClassUtils.java,v $
- * Revision 1.23  2012-04-12 09:01:26  m00f069
+ * Revision 1.23  2012-04-12 09:01:26  jaco
  * Fix getResourceURL for getting XSD from IAF jar (which contains a space in filename)
  *
  * Revision 1.22  2011/11/30 13:51:49  peter

@@ -15,7 +15,7 @@
 */
 /*
  * $Log: AbstractPipe.java,v $
- * Revision 1.45  2012-10-10 10:19:37  m00f069
+ * Revision 1.45  2012-10-10 10:19:37  jaco
  * Made it possible to use Locker on Pipe level too
  *
  * Revision 1.44  2012/08/23 11:57:44  jaco
